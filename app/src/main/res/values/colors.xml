@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--    New Palette     -->
-    <color name="accent_0">#e0b1cb</color>
-    <color name="accent_1">#9f86c0</color>
+    <color name="base_0">#1e1c2c</color>
+    <color name="base_1">#221f31</color>
+    <color name="base_2">#7b7889</color>
+    <color name="accent_0">#d7fc70</color>
+    <color name="accent_1">#7654b1</color>
     <color name="accent_2">#be95c4</color>
     <color name="accent_3">#5e548e</color>
     <color name="accent_4">#231942</color>

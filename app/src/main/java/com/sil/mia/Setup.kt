@@ -87,12 +87,12 @@ class Setup : AppCompatActivity() {
         if (areAllPermissionsGranted()) {
             // Change button color to green (use your specific green color resource)
             permissionButton.setBackgroundColor(ContextCompat.getColor(this, R.color.accent_0))
-            permissionButton.setTextColor(ContextCompat.getColor(this, R.color.white))
+            permissionButton.setTextColor(ContextCompat.getColor(this, R.color.accent_1))
             permissionButton.text = getString(R.string.gavePermissionsText)
         } else {
             // Keep or reset to default color
-            permissionButton.setBackgroundColor(ContextCompat.getColor(this, R.color.white))
-            permissionButton.setTextColor(ContextCompat.getColor(this, R.color.gray_70))
+            permissionButton.setBackgroundColor(ContextCompat.getColor(this, R.color.base_0))
+            permissionButton.setTextColor(ContextCompat.getColor(this, R.color.gray_50))
             permissionButton.text = getString(R.string.givePermissionsText)
         }
     }

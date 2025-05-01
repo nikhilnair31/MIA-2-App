@@ -20,7 +20,7 @@
         <layer-list>
             <item>
                 <shape>
-                    <solid android:color="@color/gray_90"/>
+                    <solid android:color="@color/base_1"/>
                     <corners android:radius="@dimen/softCorners"/>
                 </shape>
             </item>

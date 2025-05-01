@@ -6,7 +6,7 @@
 
     <item android:id="@android:id/background">
         <shape>
-            <solid android:color="@color/gray_90"/>
+            <solid android:color="@color/base_1"/>
             <corners android:radius="@dimen/softCorners"/>
             <padding
                 android:left="10dp"

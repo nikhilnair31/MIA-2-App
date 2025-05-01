@@ -4,7 +4,7 @@
     android:viewportHeight="20"
     android:viewportWidth="16"
     android:alpha="0.8"
-    android:tint="@color/gray_90"
+    android:tint="@color/accent_1"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <group
         android:translateX="2.5"
