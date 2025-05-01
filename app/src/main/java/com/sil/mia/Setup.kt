@@ -15,6 +15,7 @@ import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.content.edit
 import com.sil.others.Helpers
 
 class Setup : AppCompatActivity() {
@@ -70,7 +71,11 @@ class Setup : AppCompatActivity() {
         if (userNameText.isNotEmpty()) {
             Log.i(TAG, "goToMain\nuserName: $userNameText")
 
-            generalSharedPreferences.edit().putString("userName", userNameText).apply()
+            generalSharedPreferences.edit { putString("userName", userNameText) }
+            generalSharedPreferences.edit { putString("saveAudioFiles", false.toString()) }
+            generalSharedPreferences.edit { putString("saveImageFiles", true.toString()) }
+            generalSharedPreferences.edit { putString("preprocessAudio", false.toString()) }
+            generalSharedPreferences.edit { putString("preprocessImage", true.toString()) }
 
             launchMainActivity()
         }
