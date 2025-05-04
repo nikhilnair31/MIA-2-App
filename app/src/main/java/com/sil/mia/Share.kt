@@ -4,7 +4,6 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.sil.others.Helpers
 import com.sil.services.ScreenshotService
@@ -46,8 +45,6 @@ class Share : AppCompatActivity() {
         finish()
     }
     private fun handleSendImage(imageUri: Uri?) {
-        Toast.makeText(this, "Image shared!", Toast.LENGTH_SHORT).show()
-
         imageUri?.let {
             var realPath = Helpers.getRealPathFromUri(this, it)
             if (realPath == null) {
@@ -63,8 +60,6 @@ class Share : AppCompatActivity() {
     }
     private fun handleSendMultipleImages(imageUris: ArrayList<Uri>?) {
         Log.d(TAG, "handleSendMultipleImages | imageUris.size: ${imageUris?.size}")
-
-        Toast.makeText(this, "Images shared!", Toast.LENGTH_SHORT).show()
 
         imageUris?.forEach { uri ->
             var realPath = Helpers.getRealPathFromUri(this, uri)

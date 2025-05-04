@@ -1,6 +1,5 @@
 package com.sil.others
 
-import android.app.Activity
 import android.content.Context
 import android.content.SharedPreferences
 import android.net.Uri
@@ -272,6 +271,7 @@ class Helpers {
                         val imageRequest = PutObjectRequest(BUCKET_NAME, imageKeyName, fileInputStream, metadata)
                         try {
                             s3Client.putObject(imageRequest)
+                            showToast(context, "Saved image!")
                             Log.d(TAG, "Uploaded image to S3!")
                         }
                         catch (e: Exception) {
@@ -407,13 +407,9 @@ class Helpers {
 
         // region UI Related
         fun showToast(context: Context, message: String) {
-            if (context is Activity) {
-                context.runOnUiThread {
-                    Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
-                }
-            }
-            else {
-                Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+            val mainHandler = android.os.Handler(android.os.Looper.getMainLooper())
+            mainHandler.post {
+                Toast.makeText(context.applicationContext, message, Toast.LENGTH_SHORT).show()
             }
         }
         // endregion

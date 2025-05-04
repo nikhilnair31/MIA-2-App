@@ -2,7 +2,7 @@
 <resources>
     <!-- UI -->
     <dimen name="roundedCorners">48dp</dimen>
-    <dimen name="softCorners">8dp</dimen>
+    <dimen name="softCorners">0dp</dimen>
     <dimen name="lineThickness">2dp</dimen>
 
     <!-- Vars -->

@@ -104,7 +104,7 @@ class ScreenshotService : Service() {
     // endregion
 
     companion object {
-        private val TAG = "Screenshot Servicee"
+        private val TAG = "Screenshot Service"
 
         fun uploadImageFileWithMetadata(context: Context, imageFile: File) {
             // Get the shared preferences for metadata values
