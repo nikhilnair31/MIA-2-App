@@ -6,6 +6,7 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
+import android.view.HapticFeedbackConstants
 import android.widget.ImageButton
 import android.widget.ToggleButton
 import androidx.appcompat.app.AppCompatActivity
@@ -25,7 +26,6 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.util.concurrent.TimeUnit
-
 
 class Main : AppCompatActivity() {
     // region Vars
@@ -77,6 +77,7 @@ class Main : AppCompatActivity() {
         }
         audioToggleButton.setOnCheckedChangeListener { _, isChecked ->
             Log.i(TAG, "Audio toggle changed: isChecked=$isChecked")
+            audioToggleButton.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY)
             updateServiceState(
                 AudioService::class.java,
                 isChecked,
@@ -92,6 +93,7 @@ class Main : AppCompatActivity() {
         }
         screenshotToggleButton.setOnCheckedChangeListener { _, isChecked ->
             Log.i(TAG, "Screenshot toggle changed: isChecked=$isChecked")
+            audioToggleButton.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY)
             updateServiceState(
                 ScreenshotService::class.java,
                 isChecked,
@@ -107,6 +109,7 @@ class Main : AppCompatActivity() {
         }
         notificationsToggleButton.setOnCheckedChangeListener { _, isChecked ->
             Log.i(TAG, "Notifications toggle changed: isChecked=$isChecked")
+            audioToggleButton.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY)
             updateWorkerState(
                 "notification",
                 PERIODIC_NOTIFICATION_CHECK_WORK,
@@ -123,14 +126,36 @@ class Main : AppCompatActivity() {
         }
     }
     private fun updateToggleStates() {
-        audioToggleButton.isChecked = isServiceRunning(this, AudioService::class.java)
-        screenshotToggleButton.isChecked = isServiceRunning(this, ScreenshotService::class.java)
+//        // Animator setup
+//        val expandAnim = AnimatorInflater.loadAnimator(this, R.animator.expand)
+//        val shrinkAnim = AnimatorInflater.loadAnimator(this, R.animator.shrink)
 
-        val sensorWorkInfoList =  WorkManager.getInstance(this).getWorkInfosForUniqueWork(PERIODIC_SENSOR_DATA_UPLOAD_WORK).get()
-        val isSensorWorkerRunningOrEnqueued = sensorWorkInfoList.any {
+        fun animateToggle(toggle: ToggleButton, shouldBeChecked: Boolean) {
+            // Only animate if the state changes
+            val wasChecked = toggle.isChecked
+            toggle.isChecked = shouldBeChecked
+
+            if (wasChecked == shouldBeChecked) return
+
+//            val animRes = if (shouldBeChecked) R.animator.expand else R.animator.shrink
+//            val anim = AnimatorInflater.loadAnimator(this, animRes)
+//            anim.setTarget(toggle)
+//            anim.start()
+        }
+
+        val isAudioRunning = isServiceRunning(this, AudioService::class.java)
+        animateToggle(audioToggleButton, isAudioRunning)
+
+        val isScreenshotRunning = isServiceRunning(this, ScreenshotService::class.java)
+        animateToggle(screenshotToggleButton, isScreenshotRunning)
+
+        val notificationCheckWorkInfoList =  WorkManager.getInstance(this)
+            .getWorkInfosForUniqueWork(PERIODIC_NOTIFICATION_CHECK_WORK)
+            .get()
+        val isNotificationRunning = notificationCheckWorkInfoList.any {
             it.state == androidx.work.WorkInfo.State.RUNNING || it.state == androidx.work.WorkInfo.State.ENQUEUED
         }
-        notificationsToggleButton.isChecked = isSensorWorkerRunningOrEnqueued
+        animateToggle(notificationsToggleButton, isNotificationRunning)
     }
     // endregion
 

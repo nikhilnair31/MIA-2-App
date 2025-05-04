@@ -3,22 +3,27 @@
         name="Theme.MIA"
         parent="Theme.MaterialComponents.DayNight.NoActionBar"
     >
+        <!-- Base -->
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowBackground">@android:color/white</item>
+        <item name="android:windowLightStatusBar">true</item>
+
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/accent_0</item>
         <item name="colorPrimaryVariant">@color/accent_1</item>
-        <item name="colorOnPrimary">@color/black_0</item>
+        <item name="colorOnPrimary">@android:color/black</item>
+
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/accent_0</item>
         <item name="colorSecondaryVariant">@color/accent_1</item>
-        <item name="colorOnSecondary">@color/black_0</item>
-        <!-- Customize -->
-        <item name="android:navigationBarColor">@android:color/transparent</item>
-        <item name="android:statusBarColor">@android:color/transparent</item>
-        <item name="android:windowBackground">@color/white</item>
-        <item name="android:windowLightStatusBar">true</item>
+        <item name="colorOnSecondary">@android:color/black</item>
     </style>
 
-    <style name="TransparentActivity" parent="Theme.AppCompat.NoActionBar">
+    <style
+        name="Theme.TransparentActivity"
+        parent="Theme.AppCompat.NoActionBar"
+    >
         <item name="android:background">@android:color/transparent</item>
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:windowIsTranslucent">true</item>

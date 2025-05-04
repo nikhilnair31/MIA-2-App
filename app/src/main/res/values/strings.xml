@@ -2,7 +2,6 @@
     <string name="appName">MIA</string>
 
     <string name="nextButton">next button</string>
-    <string name="refreshButton">refresh button</string>
     <string name="backButton">back button</string>
 
     <string name="appLogoDescription">app logo</string>
@@ -25,16 +24,9 @@
     <string name="gavePermissionsText">ALL PERMISSIONS GRANTED!</string>
     <string name="givePermissionsText">GRANT ALL PERMISSIONS</string>
 
-    <string name="settingsButtonDescription">settings button</string>
-    <string name="sendButtonDescription">send</string>
-    <string name="talkToMiaHint">TALK TO MIA…</string>
-
     <string name="settingsText">SETTINGS</string>
-    <string name="settingsImageDescription">user image</string>
     <string name="settingsUsernameText">USERNAME: abc</string>
     <string name="settingsPreprocessAudio">AUDIO</string>
     <string name="settingsPreprocessImage">IMAGE</string>
-
-    <string name="gpt4turbo" tools:ignore="TypographyDashes">gpt-4-turbo-preview</string>
 
 </resources>

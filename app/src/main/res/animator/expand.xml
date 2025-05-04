@@ -1,0 +1,9 @@
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+    <objectAnimator
+        android:propertyName="scaleX"
+        android:valueFrom="1"
+        android:valueTo="3"
+        android:duration="500"
+        android:valueType="floatType"
+        android:interpolator="@android:interpolator/overshoot" />
+</set>

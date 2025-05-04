@@ -61,7 +61,7 @@
         <activity
             android:name=".Share"
             android:exported="true"
-            android:theme="@style/TransparentActivity"
+            android:theme="@style/Theme.TransparentActivity"
             android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.SEND" />

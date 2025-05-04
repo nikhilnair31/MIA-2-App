@@ -44,12 +44,12 @@ class Settings : AppCompatActivity() {
         imageSaveCheckbox = findViewById(R.id.imageSaveCheckbox)
         audioPreprocessCheckbox = findViewById(R.id.audioPreprocessCheckbox)
         imagePreprocessCheckbox = findViewById(R.id.imagePreprocessCheckbox)
-        backButton = findViewById(R.id.buttonBack)
+//        backButton = findViewById(R.id.buttonBack)
 
         textSetup()
         editTextSetup()
         checkboxSetup()
-        buttonSetup()
+//        buttonSetup()
     }
     // endregion
 
@@ -119,11 +119,11 @@ class Settings : AppCompatActivity() {
         }
     }
 
-    private fun buttonSetup() {
-        backButton.setOnClickListener {
-            onBackPressed()
-        }
-    }
+//    private fun buttonSetup() {
+//        backButton.setOnClickListener {
+//            onBackPressed()
+//        }
+//    }
 
     @Deprecated("Deprecated in Java")
     override fun onBackPressed() {

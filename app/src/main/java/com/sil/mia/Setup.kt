@@ -97,7 +97,7 @@ class Setup : AppCompatActivity() {
         } else {
             // Keep or reset to default color
             permissionButton.setBackgroundColor(ContextCompat.getColor(this, R.color.base_0))
-            permissionButton.setTextColor(ContextCompat.getColor(this, R.color.gray_50))
+            permissionButton.setTextColor(ContextCompat.getColor(this, R.color.base_2))
             permissionButton.text = getString(R.string.givePermissionsText)
         }
     }

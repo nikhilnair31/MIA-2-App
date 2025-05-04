@@ -4,7 +4,7 @@
         <shape
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <solid android:color="@color/gray_8" />
+            <solid android:color="@color/android:black" />
             <corners android:radius="@dimen/softCorners" />
         </shape>
     </item>

@@ -1,9 +1,24 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-
-    <style name="Theme.MIA" parent="Base.Theme.MIA">
-        <!-- Transparent system bars for edge-to-edge. -->
+<resources>
+    <style
+        name="Theme.MIA"
+        parent="Theme.MaterialComponents.DayNight.NoActionBar"
+    >
+        <!-- Base -->
         <item name="android:navigationBarColor">@android:color/transparent</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
-        <item name="android:windowLightStatusBar">?attr/isLightTheme</item>
+        <item name="android:windowBackground">@color/base_0</item>
+        <item name="android:windowLightStatusBar">false</item>
+
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/accent_0</item>
+        <item name="colorPrimaryVariant">@color/accent_1</item>
+        <item name="colorOnPrimary">@android:color/black</item>
+
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/accent_0</item>
+        <item name="colorSecondaryVariant">@color/accent_1</item>
+        <item name="colorOnSecondary">@android:color/black</item>
+    </style>
+    <style name="Base.Theme.MIA" parent="Theme.Material3.DayNight.NoActionBar">
     </style>
 </resources>

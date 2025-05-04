@@ -1,174 +1,147 @@
 <!-- activity_second.xml -->
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout0"
+    <TextView
+        android:id="@+id/textView6"
+
         android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+
+        android:fontFamily="@font/venus_cormier"
+        android:gravity="center_vertical|start"
+        android:text="@string/setupText"
+        android:textColor="@color/accent_0"
+        android:textSize="96sp"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_marginStart="24dp"
-
-            android:paddingStart="0dp"
-
-            android:text="@string/setupText"
-            android:textColor="@color/accent_0"
-            android:textSize="36sp"
-            android:fontFamily="@font/venus_cormier"
-            android:gravity="center_vertical|start"
-
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <ScrollView
-        android:id="@+id/scrollView"
+    <LinearLayout
+        android:id="@+id/constraintLayout1"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginStart="16dp"
 
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="64dp"
-        android:layout_marginEnd="0dp"
-        android:layout_marginBottom="8dp"
-        android:paddingEnd="-8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
 
-        android:scrollbars="none"
-        android:scrollbarStyle="outsideInset"
-
+        android:background="@drawable/data_background"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/textView6">
 
-        <LinearLayout
-            android:id="@+id/constraintLayout1"
+        <!-- Username Related-->
+        <TextView
+            android:id="@+id/usernameTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
 
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:fontFamily="@font/venus_cormier"
+
+            android:gravity="left"
+
+            android:padding="12dp"
+            android:text="@string/setupUsernameText"
+            android:textColor="@color/accent_1"
+            android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            android:layout_marginEnd= "16dp"
-            android:layout_marginBottom="16dp"
+        <EditText
+            android:id="@+id/usernameEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
 
-            android:background="@drawable/data_background">
+            android:layout_marginTop="8dp"
+            android:autofillHints="@string/setupUsernameHint"
+            android:background="@drawable/rounded_edittext_username_setup"
+            android:backgroundTint="@color/base_0"
 
-            <!-- Username Related-->
-            <TextView
-                android:id="@+id/usernameTextView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+            android:fontFamily="@font/venus_cormier"
+            android:gravity="center"
 
-                android:padding="12dp"
+            android:hint="@string/setupUsernameHint"
+            android:inputType="text"
+            android:padding="24dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:textColor="#CACACA"
 
-                android:fontFamily="@font/venus_cormier"
+            android:textColorHint="#CACACA"
+            android:textCursorDrawable="@drawable/cursor_color"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/usernameTextView" />
 
-                android:gravity="center"
-                android:text="@string/setupUsernameText"
-                android:textColor="@color/accent_1"
-                android:textSize="14sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-            <EditText
-                android:id="@+id/usernameEditText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+        <!-- Permission Related-->
+        <TextView
+            android:id="@+id/permissionsTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
 
-                android:layout_marginTop="8dp"
-                android:padding="24dp"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/venus_cormier"
 
-                android:backgroundTint="@color/base_0"
-                android:background="@drawable/rounded_edittext_username_setup"
+            android:gravity="left"
 
-                android:autofillHints="@string/setupUsernameHint"
-                android:hint="@string/setupUsernameHint"
-                android:fontFamily="@font/venus_cormier"
-                android:textSize="14sp"
-                android:gravity="center"
-                android:inputType="text"
+            android:padding="12dp"
+            android:text="@string/setupPermissionsText"
+            android:textColor="@color/accent_1"
+            android:textSize="14sp"
 
-                android:textColor="@color/gray_70"
-                android:textColorHint="@color/gray_50"
-                android:textCursorDrawable="@drawable/cursor_color"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/usernameTextView" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editText" />
 
-            <!-- Permission Related-->
-            <TextView
-                android:id="@+id/permissionsTextView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+        <Button
+            android:id="@+id/buttonPermission"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
 
-                android:layout_marginTop="8dp"
-                android:padding="12dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/venus_cormier"
+            android:padding="24dp"
 
-                android:gravity="center"
+            android:radius="@dimen/softCorners"
+            android:stateListAnimator="@null"
+            android:text="@string/givePermissionsText"
+            android:textColor="#CACACA"
+            android:textSize="14sp"
 
-                android:text="@string/setupPermissionsText"
-                android:textColor="@color/accent_1"
-                android:textSize="14sp"
-                android:fontFamily="@font/venus_cormier"
+            app:backgroundTint="@color/base_0"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/permissionsTextView" />
 
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editText" />
-            <Button
-                android:id="@+id/buttonPermission"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+    </LinearLayout>
 
-                android:layout_marginTop="8dp"
-                android:padding="24dp"
-                android:radius="@dimen/softCorners"
+    <ImageButton
+        android:id="@+id/buttonUpdateAndNext"
 
-                android:fontFamily="@font/venus_cormier"
-                android:text="@string/givePermissionsText"
-                android:textColor="@color/gray_70"
-                android:textSize="14sp"
-                android:stateListAnimator="@null"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="32dp"
 
-                app:backgroundTint="@color/base_0"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/permissionsTextView" />
+        android:layout_width="64dp"
+        android:layout_height="64dp"
 
-            <ImageButton
-                android:id="@+id/buttonUpdateAndNext"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_marginTop="16dp"
+        android:background="@drawable/baseline_keyboard_arrow_right_24"
+        app:iconTint="@color/accent_0"
+        app:iconSize="32dp"
+        android:contentDescription="@string/nextButton"
 
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/removeSilenceLayout"
-
-                android:background="@drawable/baseline_keyboard_arrow_right_24"
-                android:layout_gravity="center_horizontal"
-                android:contentDescription="@string/nextButton"
-                android:text="" />
-
-        </LinearLayout>
-
-    </ScrollView>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

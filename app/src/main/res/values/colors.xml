@@ -1,27 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!--    New Palette     -->
-    <color name="base_0">#1e1c2c</color>
-    <color name="base_1">#221f31</color>
+    <color name="base_0">#FBF2FF</color>
+    <color name="base_1">#F9E6FF</color>
     <color name="base_2">#7b7889</color>
-    <color name="accent_0">#d7fc70</color>
-    <color name="accent_1">#7654b1</color>
-    <color name="accent_2">#be95c4</color>
-    <color name="accent_3">#5e548e</color>
-    <color name="accent_4">#231942</color>
-    <!--    Transparent Palette     -->
-    <color name="accent_0a">#40E0B1CB</color>
-    <color name="accent_1a">#409F86C0</color>
-    <color name="accent_2a">#40BE95C4</color>
-    <color name="accent_3a">#405E548E</color>
-    <color name="accent_4a">#40231942</color>
-    <!--    Basic Palette     -->
-    <color name="white">#FFFFFFFF</color>
-    <color name="gray_90">#FAF7FF</color>
-    <color name="gray_70">#B3B3B3</color>
-    <color name="gray_50">#808080</color>
-    <color name="gray_15">#262626</color>
-    <color name="gray_8">#141414</color>
-    <color name="gray_5">#0D0D0D</color>
-    <color name="black_0">#FF000000</color>
+
+    <color name="accent_0">#7858B0</color>
+    <color name="accent_1">#6D46B0</color>
+    <color name="accent_3">#deff96</color>
 </resources>
