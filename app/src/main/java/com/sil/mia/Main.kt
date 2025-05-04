@@ -126,11 +126,11 @@ class Main : AppCompatActivity() {
         audioToggleButton.isChecked = isServiceRunning(this, AudioService::class.java)
         screenshotToggleButton.isChecked = isServiceRunning(this, ScreenshotService::class.java)
 
-        val sensorWorkInfoList =  WorkManager.getInstance(this).getWorkInfosForUniqueWork(PERIODIC_SENSOR_DATA_UPLOAD_WORK).get()
-        val isSensorWorkerRunningOrEnqueued = sensorWorkInfoList.any {
+        val notificationCheckWorkInfoList =  WorkManager.getInstance(this).getWorkInfosForUniqueWork(PERIODIC_NOTIFICATION_CHECK_WORK).get()
+        val isNotificationCheckWorkerRunningOrEnqueued = notificationCheckWorkInfoList.any {
             it.state == androidx.work.WorkInfo.State.RUNNING || it.state == androidx.work.WorkInfo.State.ENQUEUED
         }
-        notificationsToggleButton.isChecked = isSensorWorkerRunningOrEnqueued
+        notificationsToggleButton.isChecked = isNotificationCheckWorkerRunningOrEnqueued
     }
     // endregion
 
