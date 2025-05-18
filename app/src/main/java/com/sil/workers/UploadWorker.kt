@@ -23,7 +23,7 @@ class UploadWorker(context: Context, workerParams: WorkerParameters) : Worker(co
                 Helpers.uploadAudioFileToS3(applicationContext, file, fileSave, filePreprocess)
             }
             else if (fileSource == "image") {
-                Helpers.uploadImageFileToS3(applicationContext, file, fileSave, filePreprocess)
+                Helpers.uploadImageFileToServer(applicationContext, file, fileSave, filePreprocess)
             }
 
             return Result.success()

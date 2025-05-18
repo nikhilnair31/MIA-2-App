@@ -22,6 +22,7 @@ android {
 
         // API Keys
         // AWS Related
+        buildConfigField "String", "SERVER_URL", "\"${properties.getProperty('SERVER_URL')}\""
         buildConfigField "String", "BUCKET_NAME", "\"${properties.getProperty('BUCKET_NAME')}\""
         buildConfigField "String", "AWS_ACCESS_KEY", "\"${properties.getProperty('AWS_ACCESS_KEY')}\""
         buildConfigField "String", "AWS_SECRET_KEY", "\"${properties.getProperty('AWS_SECRET_KEY')}\""

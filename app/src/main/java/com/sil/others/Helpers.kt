@@ -24,10 +24,15 @@ import com.amazonaws.services.s3.model.PutObjectRequest
 import com.sil.mia.BuildConfig
 import com.sil.workers.UploadWorker
 import kotlinx.coroutines.delay
+import okhttp3.Call
+import okhttp3.Callback
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
 import okhttp3.OkHttpClient
 import okhttp3.Request
+import okhttp3.RequestBody.Companion.asRequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
+import okhttp3.Response
 import org.json.JSONObject
 import java.io.File
 import java.io.FileInputStream
@@ -42,6 +47,7 @@ class Helpers {
         // region API Keys
         private const val TAG = "Helper"
 
+        private const val SERVER_URL = BuildConfig.SERVER_URL
         private const val BUCKET_NAME = BuildConfig.BUCKET_NAME
         private const val AWS_ACCESS_KEY = BuildConfig.AWS_ACCESS_KEY
         private const val AWS_SECRET_KEY = BuildConfig.AWS_SECRET_KEY
@@ -174,6 +180,66 @@ class Helpers {
 
             val appContext = context.applicationContext
             WorkManager.getInstance(appContext).enqueue(uploadWorkRequest)
+        }
+        // endregion
+
+        // region Server Related
+        fun uploadImageFileToServer(context: Context, imageFile: File?, saveFile: String?, preprocessFile: String?) {
+            Log.i("Helpers", "Uploading Image to Server...")
+
+            try {
+                imageFile?.let {
+                    // Verify the file's readability and size
+                    if (!it.exists() || !it.canRead() || it.length() <= 0) {
+                        Log.e(TAG, "Image file does not exist, is unreadable or empty")
+                        return
+                    }
+
+                    // Upload file
+                    val generalSharedPrefs: SharedPreferences = context.getSharedPreferences("com.sil.mia.generalSharedPrefs", Context.MODE_PRIVATE)
+                    val userName = generalSharedPrefs.getString("userName", null)
+
+                    val requestBody = MultipartBody.Builder().setType(MultipartBody.FORM)
+                        .addFormDataPart("username", userName.toString())
+                        .addFormDataPart(
+                            "image",
+                            imageFile.name,
+                            imageFile.asRequestBody("image/png".toMediaTypeOrNull())
+                        )
+                        .build()
+
+                    val request = Request.Builder()
+                        .url("$SERVER_URL/upload")
+                        .post(requestBody)
+                        .build()
+
+                    val client = OkHttpClient()
+                    client.newCall(request).enqueue(object : Callback {
+                        override fun onFailure(call: Call, e: IOException) {
+                            Log.e(TAG, "Image upload to Flask failed: ${e.localizedMessage}")
+                            showToast(context, "Save failed!")
+                        }
+
+                        override fun onResponse(call: Call, response: Response) {
+                            if (response.isSuccessful) {
+                                Log.i(TAG, "Image uploaded to Flask successfully: ${response.body?.string()}")
+                                showToast(context, "Image saved!")
+                            } else {
+                                Log.e(TAG, "Flask server returned error ${response.code}: ${response.body?.string()}")
+                                showToast(context, "Save failed!")
+                            }
+                        }
+                    })
+                }
+            }
+            catch (e: Exception) {
+                when (e) {
+                    is AmazonServiceException -> Log.e(TAG, "Error uploading image to S3: ${e.message}")
+                    is FileNotFoundException -> Log.e(TAG, "Image file not found: ${e.message}")
+                    else -> Log.e(TAG, "Error in image S3 upload: ${e.localizedMessage}")
+                }
+                e.printStackTrace()
+            }
         }
         // endregion
 
