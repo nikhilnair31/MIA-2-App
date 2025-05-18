@@ -11,6 +11,9 @@ import android.widget.ImageButton
 import android.widget.ToggleButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.edit
+import androidx.core.content.pm.ShortcutInfoCompat
+import androidx.core.content.pm.ShortcutManagerCompat
+import androidx.core.graphics.drawable.IconCompat
 import androidx.work.BackoffPolicy
 import androidx.work.Constraints
 import androidx.work.ExistingPeriodicWorkPolicy
@@ -56,6 +59,21 @@ class Main : AppCompatActivity() {
         initViews()
         setupListeners()
         updateToggleStates()
+
+        if (ShortcutManagerCompat.isRequestPinShortcutSupported(this)) {
+            val shortcut = ShortcutInfoCompat.Builder(this, "share_image")
+                .setShortLabel("Save to MIA")
+                .setLongLabel("Save to MIA")
+                .setIcon(IconCompat.createWithResource(this, R.drawable.mia_stat_name))
+                .setIntent(
+                    Intent(Intent.ACTION_SEND)
+                        .setClass(this, Share::class.java)
+                        .setType("image/*")
+                )
+                .build()
+
+            ShortcutManagerCompat.pushDynamicShortcut(this, shortcut)
+        }
     }
 
     private fun initSharedPreferences() {

@@ -1,6 +1,8 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <string name="appName">MIA</string>
 
+    <string name="shortcut_label_save_image">Save to MIA</string>
+
     <string name="nextButton">next button</string>
     <string name="backButton">back button</string>
 

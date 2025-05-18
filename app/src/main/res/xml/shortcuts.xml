@@ -1,0 +1,14 @@
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+    <shortcut
+        android:shortcutId="share_image"
+        android:shortcutShortLabel="@string/shortcut_label_save_image"
+        android:shortcutLongLabel="@string/shortcut_label_save_image"
+        android:enabled="true"
+        android:icon="@drawable/mia_stat_name">
+
+        <share-target
+            android:targetClass="com.sil.mia.Share">
+            <data android:mimeType="image/*" />
+        </share-target>
+    </shortcut>
+</shortcuts>
